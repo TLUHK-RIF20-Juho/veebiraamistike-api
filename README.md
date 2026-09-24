@@ -86,7 +86,13 @@ Seejärel loo andmebaas:
 npx wrangler d1 create events-db
 ```
 
+Kui Wrangler küsib **Would you like Wrangler to add it on your behalf?**, vasta `No` (`N`). D1 sidumine on `wrangler.jsonc`-is juba olemas.
+
+Kui vastasid enne seda kogemata `Yes`, sisesta sidumise nimeks `DB`, mitte vaikeväärtust `events_db`: API kood kasutab binding-ut nimega `DB`. Kohaliku arenduse küsimusele **For local dev, do you want to connect to the remote resource instead of a local resource?** vasta `No` (`N` või Enter).
+
 Kopeeri käsu väljundist `database_id` faili `wrangler.jsonc` rea `ASENDA_OMA_DATABASE_ID` asemele.
+
+Kontrolli, et `wrangler.jsonc`-is on ainult üks D1 sidumine ja selle nimi on `DB`.
 
 ## 5. Juuruta
 
