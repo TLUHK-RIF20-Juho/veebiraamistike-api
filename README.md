@@ -2,11 +2,40 @@
 
 See on valmis Cloudflare Worker + D1 API. Muuda näidisandmed enda sündmusteks ja juuruta API oma Cloudflare'i kontole.
 
-## 1. Paigalda
+## Enne alustamist
+
+Sul on vaja:
+
+- Node.js-i ja npm-i;
+- GitHubi kontot;
+- tasuta Cloudflare'i kontot.
+
+Kui sul ei ole Cloudflare'i kontot:
+
+1. ava [Cloudflare'i konto loomine](https://dash.cloudflare.com/sign-up);
+2. sisesta e-posti aadress ja parool;
+3. vajuta **Create Account**;
+4. ava Cloudflare'i saadetud kiri ja kinnita oma e-posti aadress.
+
+## Mis on Wrangler?
+
+Wrangler on Cloudflare'i käsureatööriist. Selle abil käivitame API kohapeal, loome D1 andmebaasi ja juurutame Workeri.
+
+Wranglerit ei ole vaja arvutisse eraldi globaalselt paigaldada. See on selle projekti `package.json` failis olemas ja käsk `npm install` paigaldab selle projekti sisse.
+
+## 1. Paigalda projekt
 
 ```bash
 npm install
 ```
+
+Kontrolli, et Wrangler paigaldati:
+
+```bash
+npx wrangler --version
+```
+
+Tulemuseks peab olema versiooninumbriga rida.
 
 ## 2. Asenda näidisandmed
 
@@ -31,8 +60,29 @@ Ava <http://localhost:8787/api/events>.
 
 ## 4. Loo enda andmebaas
 
+Logi Wrangleriga enda Cloudflare'i kontole:
+
 ```bash
 npx wrangler login
+```
+
+Käsk avab brauseris Cloudflare'i sisselogimise. Logi sisse ja luba Wranglerile juurdepääs.
+
+Kui brauseriga sisselogimine ei lõpe edukalt, kasuta:
+
+```bash
+npx wrangler login --device
+```
+
+Kontrolli sisselogimist:
+
+```bash
+npx wrangler whoami
+```
+
+Seejärel loo andmebaas:
+
+```bash
 npx wrangler d1 create events-db
 ```
 
